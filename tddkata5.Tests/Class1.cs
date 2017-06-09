@@ -19,10 +19,19 @@ namespace tddkata5.Tests
             Assert.AreEqual(expected, actual);
         }
 
-        [Test]
-        public void SwapsTwoCards()
+        [TestCase("32","23")]
+        [TestCase("3A", "A3")]
+        public void SwapsTwoCards(string input, string expected)
         {
-            var input = "32";
+            var output = CardSorter.Sort(input);
+
+            Assert.That(expected, Is.EqualTo(output));
+        }
+
+        [Test]
+        public void KeepsOrderWhenInputWasAlreadySorted()
+        {
+            var input = "23";
             var expected = "23";
             var output = CardSorter.Sort(input);
 

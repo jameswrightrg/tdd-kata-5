@@ -10,43 +10,18 @@ namespace tddkata5.Tests
     [TestFixture]
     public class Class1
     {
-        [Test]
-        public void OneCardIsSorted()
-        {
-            var actual = "A";
-            var expected = CardSorter.Sort(actual);
-
-            Assert.AreEqual(expected, actual);
-        }
-
+        [TestCase("A","A")]
         [TestCase("32","23")]
+        [TestCase("32", "23")]
         [TestCase("3A", "A3")]
-        [TestCase("JK", "JK")]
-        public void SwapsTwoCards(string input, string expected)
+        [TestCase("KJ", "JK")]
+        [TestCase("23A", "A23")]
+        [TestCase("23A6742QT", "A223467TQ")]
+        public void SortsAsExpected(string input, string expected)
         {
             var output = CardSorter.Sort(input);
 
-            Assert.That(expected, Is.EqualTo(output));
-        }
-
-        [Test]
-        public void KeepsOrderWhenInputWasAlreadySorted()
-        {
-            var input = "23";
-            var expected = "23";
-            var output = CardSorter.Sort(input);
-
-            Assert.That(expected, Is.EqualTo(output));
-        }
-
-        [Test]
-        public void SortThreeCards()
-        {
-            var input = "23A";
-            var expected = "A23";
-            var output = CardSorter.Sort(input);
-
-            Assert.That(expected, Is.EqualTo(output));
+            Assert.That(output, Is.EqualTo(expected));
         }
 
         [Test]

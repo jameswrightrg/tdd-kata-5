@@ -48,5 +48,13 @@ namespace tddkata5.Tests
 
             Assert.That(expected, Is.EqualTo(output));
         }
+
+        [Test]
+        public void InvalidCardExceptionIsThrown()
+        {
+            var input = "23Z";
+
+            Assert.That(() => CardSorter.Sort(input), Throws.Exception.TypeOf<Exception>());
+        }
     }
 }

@@ -37,5 +37,15 @@ namespace tddkata5.Tests
 
             Assert.That(expected, Is.EqualTo(output));
         }
+
+        [Test]
+        public void SortThreeCards()
+        {
+            var input = "23A";
+            var expected = "A23";
+            var output = CardSorter.Sort(input);
+
+            Assert.That(expected, Is.EqualTo(output));
+        }
     }
 }

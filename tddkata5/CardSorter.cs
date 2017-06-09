@@ -7,7 +7,11 @@ namespace tddkata5
     {
         public static string Sort(string input)
         {
-            return GetReversedString(input);
+            if (input.Length == 2)
+            {
+                return input[1] < input[0] ? GetReversedString(input) : input;
+            }
+            return input;
         }
 
         private static string GetReversedString(string input)

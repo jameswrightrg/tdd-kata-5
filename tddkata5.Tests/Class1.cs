@@ -21,6 +21,7 @@ namespace tddkata5.Tests
 
         [TestCase("32","23")]
         [TestCase("3A", "A3")]
+        [TestCase("JK", "JK")]
         public void SwapsTwoCards(string input, string expected)
         {
             var output = CardSorter.Sort(input);

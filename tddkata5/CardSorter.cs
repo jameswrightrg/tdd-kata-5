@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Linq;
 
 namespace tddkata5
@@ -9,7 +10,7 @@ namespace tddkata5
         {
             if (input.Length == 2)
             {
-                return input[1] < input[0] ? GetReversedString(input) : input;
+                return GetCardValue(input[1]) < GetCardValue(input[0]) ? GetReversedString(input) : input;
             }
             return input;
         }
@@ -23,6 +24,23 @@ namespace tddkata5
             }
 
             return result;
+        }
+
+        private static int GetCardValue(char card)
+        {
+            int value = 0;
+
+            if (char.IsDigit(card))
+            {
+                return card;
+            }
+
+            if (char.ToUpperInvariant(card) == 'A')
+            {
+                return 1;
+            }
+
+            throw new Exception("Invalid card");
         }
     }
 }

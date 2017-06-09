@@ -10,14 +10,7 @@ namespace tddkata5
 
         public static string Sort(string input)
         {
-            var cards = input.Select(GetCardValue);
-            cards = cards.OrderBy(i => i);
-            return new string(cards.Select(GetCardName).ToArray());
-        }
-
-        private static char GetCardName(int arg)
-        {
-            return validCards[arg];
+            return new string(input.OrderBy(GetCardValue).ToArray());
         }
 
         private static int GetCardValue(char card)

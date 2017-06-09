@@ -14,7 +14,7 @@ namespace tddkata5.Tests
         public void OneCardIsSorted()
         {
             var actual = "A";
-            var expected = CardSorter.Sort();
+            var expected = CardSorter.Sort(actual);
 
             Assert.AreEqual(expected, actual);
         }

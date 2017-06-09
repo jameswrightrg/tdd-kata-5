@@ -8,31 +8,23 @@ namespace tddkata5
     {
         public static string Sort(string input)
         {
-            if (input.Length == 2)
-            {
-                return GetCardValue(input[1]) < GetCardValue(input[0]) ? GetReversedString(input) : input;
-            }
-            return input;
+            var cards = input.Select(GetCardValue);
+            cards = cards.OrderBy(i => i);
+            return new string(cards.Select(GetCardName).ToArray());
         }
 
-        private static string GetReversedString(string input)
+        private static char GetCardName(int arg)
         {
-            var result = "";
-            for (int i = input.Length - 1; i >= 0; i--)
-            {
-                result += input[i];
-            }
-
-            return result;
+            return arg == 1 ? 'A' : arg.ToString()[0];
         }
 
         private static int GetCardValue(char card)
         {
-            int value = 0;
+            var value = 0;
 
-            if (char.IsDigit(card))
+            if (int.TryParse(card.ToString(), out value))
             {
-                return card;
+                return value;
             }
 
             if (char.ToUpperInvariant(card) == 'A')
